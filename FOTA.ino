@@ -86,11 +86,7 @@ void FOTAConfigureWebServer(AsyncWebServer &server, String &username, String &pa
         #else
           if (!Update.begin(UPDATE_SIZE_UNKNOWN, U_FLASH)) {
           Serial.println("FOTA Start Not Ok");
-          #ifdef ESP8266
-            FOTA_update_error = Update.getErrorString();
-          #else
-            FOTA_update_error = Update.errorString();
-          #endif
+          FOTA_update_error = Update.errorString();
           FOTA_update_error.concat("\n");
           } else {
             Serial.println("FOTA Start Oke");
